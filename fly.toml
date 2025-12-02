@@ -1,0 +1,10 @@
+app = "vilor-ai"
+
+[build]
+  image = "python:3.11"
+
+[env]
+  BYTEZ_KEY = "82aeed12438e4526e91f4e00a70a5eba"
+
+[deploy]
+  release_command = "echo Deployed"
