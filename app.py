@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 import requests
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # <- Permite CORS para qualquer origem
 
-# SUA CHAVE AQUI, segura no Fly.io via variável de ambiente
 BYTEZ_KEY = "82aeed12438e4526e91f4e00a70a5eba"
 
 MODELS = {
@@ -24,12 +25,7 @@ def run_vilor():
             return jsonify({"error": "Modo inválido"}), 400
 
         url = MODELS[mode]
-        payload = {}
-
-        if mode == "chat":
-            payload["messages"] = prompt
-        else:
-            payload["text"] = prompt
+        payload = {"messages": prompt} if mode=="chat" else {"text": prompt}
 
         headers = {
             "Authorization": BYTEZ_KEY,
