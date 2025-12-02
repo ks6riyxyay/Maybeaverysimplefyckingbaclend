@@ -102,7 +102,7 @@ def text2video():
         headers = {"Content-Type":"application/json"}
         # Aqui usamos endpoint público sem token
         resp = requests.post(
-            "https://api-inference.huggingface.co/models/open-video/ovi-1.0",
+            "https://router.huggingface.co/models/open-video/ovi-1.0",
             headers=headers,
             json=payload,
             timeout=300
